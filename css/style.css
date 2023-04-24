@@ -1,0 +1,80 @@
+* {
+    margin:0;
+    padding:0
+}
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.frame {
+    border: 1px solid #CCC;
+    width:800px;
+    height:300px;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding:20px
+}
+
+.frame input[type="text"] {
+    padding: 10px 20px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.frame input[type="submit"] {
+    padding: 10px 36px;
+    margin-left: 18px;
+    background-color: #03a9f4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.frame hr {
+    border: 1px solid #CCC
+}
+
+.frame .list {
+    background: #EEE;
+    margin-top: 30px;
+    padding:20px;
+    min-height:50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.frame .list .mission {
+    margin-bottom: 10px;
+    background-color:white;
+    padding:10px;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.frame .list .mission i {
+    color:#03a9f4;
+    cursor:pointer
+}
+.frame .clear {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top:30px;
+    
+}
+.frame .clear button {
+    padding:10px 30px;
+    background-color:black;
+    color:white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
