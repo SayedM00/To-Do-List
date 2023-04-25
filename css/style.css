@@ -11,7 +11,7 @@ body {
 .frame {
     border: 1px solid #CCC;
     width:800px;
-    height:300px;
+    min-height:300px;
     border-radius:5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding:20px
