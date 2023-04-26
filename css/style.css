@@ -78,3 +78,8 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.done {
+    text-decoration: line-through;
+    opacity:.5
+}
