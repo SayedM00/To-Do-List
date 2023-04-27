@@ -65,7 +65,7 @@ body {
 }
 .frame .clear {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin-top:30px;
     
@@ -78,6 +78,42 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.clear  input[type="checkbox"] {
+    appearance: none;
+}
+
+.clear  div {
+    background-color: black;
+    width:70px;
+    height:30px;
+    border-radius: 20px;
+    position:relative;
+    transition:.3s;
+    cursor: pointer;
+} 
+.clear  div::after {
+    content:"";
+    position: absolute;
+    width:25px;
+    height:25px;
+    border-radius: 50%;
+    background-color: white;
+    top:50%;
+    left:3px;
+    top: 3px;
+    cursor: pointer;
+    transition:.3s
+
+}
+.clear input[type="checkbox"]:checked + div {
+    background-color: white;
+}
+
+.clear input[type="checkbox"]:checked + div::after {
+    left: 42px;
+    background-color: black;
+} 
 
 .done {
     text-decoration: line-through;

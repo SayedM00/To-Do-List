@@ -2,7 +2,7 @@ let inputTask = document.querySelector("[type='text'");
 let addTask = document.querySelector("[type='submit'");
 let TasksBox = document.querySelector(".list")
 let arrayOfTasks = []
-let claerBtn = document.querySelector('.clear')
+let claerBtn = document.querySelector('.clear button')
 
 
 // Get Tasks From Local Storage
@@ -67,6 +67,16 @@ function getTasksFromLocalStorage() {
             addTaskToTasksBox(JSON.parse(localStorage.getItem("Tasks")))
             arrayOfTasks = JSON.parse(localStorage.getItem("Tasks"))
     }
+    if (localStorage.getItem("btn")) {
+        if (localStorage.getItem("btn") === "true") {
+            // document.querySelector(".checkbox").checked = "true"
+            console.log(document.querySelector(".checkbox + div"))
+            document.documentElement.querySelector("body").style.background = localStorage.getItem("bg")
+        } else {
+            // document.querySelector(".checkbox").checked = "false"
+            console.log(document.querySelector(".checkbox").checked)
+        }
+}
 }
 
 // Remove Task From Tasks Box And LocalStorage
@@ -82,7 +92,6 @@ TasksBox.addEventListener("click", function(e) {
 })
 // Remove Task From  LocalStorage
 function removeTaskFromLocalStorage(taskId) {
-    console.log("ok")
     arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId)
     addTasksToLocalStorage(arrayOfTasks)
 }
@@ -100,3 +109,15 @@ claerBtn.addEventListener("click", function() {
     TasksBox.innerHTML = ""
     localStorage.clear()
 })
+
+document.querySelector(".checkbox").addEventListener("click", function () {
+    if(document.querySelector(".checkbox").checked === true) {
+        document.documentElement.querySelector("body").style.background = "black"
+        localStorage.setItem("btn", "true")
+        localStorage.setItem("bg", "black")
+    } else {
+        document.documentElement.querySelector("body").style.background = "white"
+        localStorage.setItem("btn", "false")
+        localStorage.setItem("bg", "white")
+    }
+}) 
