@@ -92,8 +92,7 @@ body {
     transition:.3s;
     cursor: pointer;
 } 
-.clear  div::after {
-    content:"";
+.clear  div span {
     position: absolute;
     width:25px;
     height:25px;
@@ -110,12 +109,17 @@ body {
     background-color: white;
 }
 
-.clear input[type="checkbox"]:checked + div::after {
+/* .clear input[type="checkbox"]:checked + div span {
     left: 42px;
     background-color: black;
-} 
+}  */
 
 .done {
     text-decoration: line-through;
     opacity:.5
+}
+
+.night {
+    background-color: black !important;
+    left: 42px !important;
 }

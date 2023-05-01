@@ -3,6 +3,10 @@ let addTask = document.querySelector("[type='submit'");
 let TasksBox = document.querySelector(".list")
 let arrayOfTasks = []
 let claerBtn = document.querySelector('.clear button')
+let ourCheckBox = document.querySelector(".checkbox");
+let ourBody = document.documentElement.querySelector("body");
+let ourCircle = document.querySelector(".checkbox + div span");
+let countOfTasks = document.querySelector(".clear > span")
 
 
 // Get Tasks From Local Storage
@@ -18,6 +22,7 @@ addTask.addEventListener("click", () => {
     } else {
         inputTask.style.borderColor = "red";
     }
+    tasksCount()
 })
 
 // Add Task To Array
@@ -67,16 +72,17 @@ function getTasksFromLocalStorage() {
             addTaskToTasksBox(JSON.parse(localStorage.getItem("Tasks")))
             arrayOfTasks = JSON.parse(localStorage.getItem("Tasks"))
     }
-    if (localStorage.getItem("btn")) {
-        if (localStorage.getItem("btn") === "true") {
-            // document.querySelector(".checkbox").checked = "true"
-            console.log(document.querySelector(".checkbox + div"))
-            document.documentElement.querySelector("body").style.background = localStorage.getItem("bg")
+    if (localStorage.getItem("btn") != null) {
+        if (localStorage.getItem("btn") === "night") {
+            ourCheckBox.checked = true
+            ourCircle.classList.add("night")
+            ourBody.style.background = localStorage.getItem("bg")
         } else {
-            // document.querySelector(".checkbox").checked = "false"
-            console.log(document.querySelector(".checkbox").checked)
+            ourCircle.classList.remove("night")
+            ourBody.style.background = localStorage.getItem("bg")
         }
-}
+    }
+    tasksCount()
 }
 
 // Remove Task From Tasks Box And LocalStorage
@@ -84,6 +90,7 @@ TasksBox.addEventListener("click", function(e) {
     if (e.target.classList.contains("remove")) {
         removeTaskFromLocalStorage(e.target.parentElement.parentElement.getAttribute("data-id"))
         e.target.parentElement.parentElement.remove()
+        tasksCount()
     }
     if (e.target.classList.contains("task")) {
         changestatus(e.target.getAttribute("data-id"))
@@ -108,16 +115,25 @@ function changestatus(task) {
 claerBtn.addEventListener("click", function() {
     TasksBox.innerHTML = ""
     localStorage.clear()
+    tasksCount()
 })
 
-document.querySelector(".checkbox").addEventListener("click", function () {
-    if(document.querySelector(".checkbox").checked === true) {
-        document.documentElement.querySelector("body").style.background = "black"
-        localStorage.setItem("btn", "true")
-        localStorage.setItem("bg", "black")
+ourCheckBox.addEventListener("click", function () {
+    if(ourCheckBox.checked === true) {
+        ourBody.style.background = "black"
+        ourCircle.classList.add("night")
+        localStorage.setItem("btn", "night")
+        localStorage.setItem("bg", ourBody.style.background)
     } else {
-        document.documentElement.querySelector("body").style.background = "white"
+        ourBody.style.background = "white"
+        ourCircle.classList.remove("night")
         localStorage.setItem("btn", "false")
-        localStorage.setItem("bg", "white")
+        localStorage.setItem("bg", ourBody.style.background)
     }
 }) 
+
+function tasksCount() {
+    countOfTasks.innerHTML = `${arrayOfTasks.length < 10 ? "0"+arrayOfTasks.length : arrayOfTasks.length} Task${arrayOfTasks.length < 2 ? "" : "s"}` 
+}
+
+console.log(new Set(arrayOfTasks))
