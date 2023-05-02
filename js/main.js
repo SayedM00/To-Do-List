@@ -135,5 +135,3 @@ ourCheckBox.addEventListener("click", function () {
 function tasksCount() {
     countOfTasks.innerHTML = `${arrayOfTasks.length < 10 ? "0"+arrayOfTasks.length : arrayOfTasks.length} Task${arrayOfTasks.length < 2 ? "" : "s"}` 
 }
-
-console.log(new Set(arrayOfTasks))
